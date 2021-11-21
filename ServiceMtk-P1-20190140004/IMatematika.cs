@@ -7,10 +7,19 @@ using System.Text;
 
 namespace ServiceMtk_P1_20190140004
 {
+    [DataContract]
+    class MathFault
+    {
+        [DataMember]
+        public string Kode { get; set; }
+        [DataMember]
+        public string Pesan { get; set; }
+    }
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IMatematika
     {
+
         [OperationContract]
         /* output->*/
         [FaultContract(typeof(MathFault))]
@@ -31,15 +40,8 @@ namespace ServiceMtk_P1_20190140004
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     // You can add XSD files into the project. After building the project, you can directly use the data types defined there, with the namespace "ServiceMtk_P1_20190140004.ContractType".
+    
     [DataContract]
-    class MathFault
-    {
-        [DataMember]
-        public string Kode { get; set; }
-        [DataMember]
-        public string Pesan { get; set; }
-    }
-
     public class Koordinat
     {
         private int _x, _y; //atribut
